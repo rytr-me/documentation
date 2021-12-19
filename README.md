@@ -78,3 +78,14 @@ curl \
   -H "Content-Type: application/json" \
   -X GET https://api.rytr.me/v1/usage
 ```
+
+
+### Custom use case create
+Create [custom use-case](https://rytr.me/resources#custom-use-cases) and submit for approval.
+```bash
+curl \
+  -H "Authentication: Bearer <API KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "<NAME>", "inputName": "<INPUT NAME>", "inputPlaceholder": "<INPUT PLACEHOLDER>", "outputExample": "<OUTPUT EXAMPLE>"}' \
+  -X POST https://api.rytr.me/v1/custom-use-cases/create
+```
