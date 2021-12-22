@@ -69,6 +69,7 @@ curl \
   -d '{"languageId": "<LANUGAGE ID>", "toneId": "<TONE ID>", "useCaseId": "<USE-CASE ID>", "inputContexts": {"<USE-CASE CONTEXT-INPUT KEY-LABEL>": "<VALUE>"}, "variations": 1, "userId": "<UNIQUE USER ID>", "format": "html"}' \
   -X POST https://api.rytr.me/v1/ryte
 ```
+Output suppored formats `format` = `html` | `text`
 
 ### Usage
 Get usage for current billing period
