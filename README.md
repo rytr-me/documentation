@@ -66,10 +66,12 @@ Generate content using AI
 curl \
   -H "Authentication: Bearer <API KEY>" \
   -H "Content-Type: application/json" \
-  -d '{"languageId": "<LANUGAGE ID>", "toneId": "<TONE ID>", "useCaseId": "<USE-CASE ID>", "inputContexts": {"<USE-CASE CONTEXT-INPUT KEY-LABEL>": "<VALUE>"}, "variations": 1, "userId": "<UNIQUE USER ID>", "format": "html"}' \
+  -d '{"languageId": "<LANUGAGE ID>", "toneId": "<TONE ID>", "useCaseId": "<USE-CASE ID>", "inputContexts": {"<USE-CASE CONTEXT-INPUT KEY-LABEL>": "<VALUE>"}, "variations": 1, "userId": "<UNIQUE USER ID>", "format": "html", "creativityLevel": "default"}' \
   -X POST https://api.rytr.me/v1/ryte
 ```
-Output suppored formats `format` = `html` | `text`
+Supported formats `format` = `html` | `text`
+
+Supported creativity levels `creativityLevel` = `default` | `low` | `medium` | `high` | `max`
 
 ### Usage
 Get usage for current billing period
