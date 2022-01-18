@@ -71,7 +71,7 @@ curl \
 ```
 Supported formats `format` = `html` | `text`
 
-Supported creativity levels `creativityLevel` = `default` | `low` | `medium` | `high` | `max`
+Supported creativity levels `creativityLevel` = `default` | `none` | `low` | `medium` | `high` | `max`
 
 ### Usage
 Get usage for current billing period
