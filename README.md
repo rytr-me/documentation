@@ -73,6 +73,8 @@ Supported formats `format` = `html` | `text`
 
 Supported creativity levels `creativityLevel` = `default` | `none` | `low` | `medium` | `high` | `max`
 
+You can request upto maximum 3 variants per request, i.e. `variations` = 1 to 3
+
 ### Usage
 Get usage for current billing period
 ```bash
