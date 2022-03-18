@@ -75,6 +75,8 @@ Supported creativity levels `creativityLevel` = `default` | `none` | `low` | `me
 
 You can request upto maximum 3 variants per request, i.e. `variations` = 1 to 3
 
+For `userId` you need to supply user ID from your database, eg: primary key for `users` database table.
+
 ### Usage
 Get usage for current billing period
 ```bash
