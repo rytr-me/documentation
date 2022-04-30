@@ -71,7 +71,11 @@ curl \
 ```
 Supported formats `format` = `html` | `text`
 
-Supported creativity levels `creativityLevel` = `default` | `low` | `medium` | `high` | `max`
+Supported creativity levels `creativityLevel` = `default` | `none` | `low` | `medium` | `high` | `max`
+
+You can request upto maximum 3 variants per request, i.e. `variations` = 1 to 3
+
+For `userId` you need to supply user ID from your database, eg: primary key for `users` database table.
 
 ### Usage
 Get usage for current billing period
