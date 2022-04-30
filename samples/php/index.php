@@ -1,8 +1,7 @@
 <?php
 
 // API key
-// define('API_KEY', '<YOUR_API_KEY>'); // (Get your API key here: https://app.rytr.me/account/api-access)
-define('API_KEY', 'GZUNBDK-Z0KQ0RSEQGTL6'); // (Get your API key here: https://app.rytr.me/account/api-access)
+define('API_KEY', '<YOUR_API_KEY>'); // (Get your API key here: https://app.rytr.me/account/api-access)
 
 // API endpoint
 define('API_URL', 'https://api.rytr.me/v1');
@@ -60,7 +59,9 @@ function useCaseDetailById($useCaseId) {
 
     $useCase = json_decode($response);
 
-    return $useCase->data;
+    if($useCase && isset($useCase->data)) {
+      return $useCase->data;
+    }
   } catch (Exception $error) {
     echo $error;
   }
@@ -85,9 +86,11 @@ function ryte($languageId, $toneId, $useCaseId, $inputContexts) {
 
     $response = curl($endpoint, 'post', $data);
 
-    $useCase = json_decode($response);
+    if($response) {
+      $useCase = json_decode($response);
 
-    return $useCase->data;
+      return $useCase->data;
+    }
   } catch (Exception $error) {
     echo $error;
   }
@@ -98,54 +101,57 @@ function ryte($languageId, $toneId, $useCaseId, $inputContexts) {
 // Example 1
 echo "Example 1 - Magic Command\n";
 $useCaseMagicCommand = useCaseDetailById($useCaseMagicCommandId);
+if($useCaseMagicCommand) {
+  $key = $useCaseMagicCommand->contextInputs[0]->keyLabel;
 
-$key = $useCaseMagicCommand->contextInputs[0]->keyLabel;
+  $inputContextsString = '{"'.$key.'":'. '"Write an email for taking a sick leave"'.'}';
+  $inputContexts = json_decode($inputContextsString);
 
-$inputContextsString = '{"'.$key.'":'. '"Write an email for taking a sick leave"'.'}';
-$inputContexts = json_decode($inputContextsString);
+  $output = ryte(
+    $languageIdEnglish,
+    $toneIdConvincing,
+    $useCaseMagicCommand->_id,
+    $inputContexts
+  );
 
-$output = ryte(
-  $languageIdEnglish,
-  $toneIdConvincing,
-  $useCaseMagicCommand->_id,
-  $inputContexts
-);
-
-print_r($output);
+  print_r($output);
+}
 
 // Example 2
 echo "Example 2 - Job description\n";
 $useCaseJobDescription = useCaseDetailById($useCaseJobDescriptionId);
+if($useCaseJobDescription) {
+  $keyRole = $useCaseJobDescription->contextInputs[0]->keyLabel;
 
-$keyRole = $useCaseJobDescription->contextInputs[0]->keyLabel;
+  $inputContextsString = '{"'.$keyRole.'":'. '"Product Manager"'.'}';
+  $inputContexts = json_decode($inputContextsString);
 
-$inputContextsString = '{"'.$keyRole.'":'. '"Product Manager"'.'}';
-$inputContexts = json_decode($inputContextsString);
+  $output = ryte(
+    $languageIdEnglish,
+    $toneIdConvincing,
+    $useCaseJobDescription->_id,
+    $inputContexts
+  );
 
-$output = ryte(
-  $languageIdEnglish,
-  $toneIdConvincing,
-  $useCaseJobDescription->_id,
-  $inputContexts
-);
-
-print_r($output);
+  print_r($output);
+}
 
 // Example 3
 echo "Example 3 - Blog section writing\n";
 $useCaseBlogSection = useCaseDetailById($useCaseBlogSectionId);
+if($useCaseBlogSection) {
+  $keyTopic = $useCaseBlogSection->contextInputs[0]->keyLabel;
+  $keyKeywords = $useCaseBlogSection->contextInputs[0]->keyLabel;
 
-$keyTopic = $useCaseBlogSection->contextInputs[0]->keyLabel;
-$keyKeywords = $useCaseBlogSection->contextInputs[0]->keyLabel;
+  $inputContextsString = '{"'.$keyTopic.'":"Role of AI Writers in the Future of Copywriting", "'.$keyKeywords.'":"Role of AI Writers in the Future of Copywriting"}';
+  $inputContexts = json_decode($inputContextsString);
 
-$inputContextsString = '{"'.$keyTopic.'":"Role of AI Writers in the Future of Copywriting", "'.$keyKeywords.'":"Role of AI Writers in the Future of Copywriting"}';
-$inputContexts = json_decode($inputContextsString);
+  $output = ryte(
+    $languageIdEnglish,
+    $toneIdConvincing,
+    $useCaseBlogSection->_id,
+    $inputContexts
+  );
 
-$output = ryte(
-  $languageIdEnglish,
-  $toneIdConvincing,
-  $useCaseBlogSection->_id,
-  $inputContexts
-);
-
-print_r($output);
+  print_r($output);
+}
