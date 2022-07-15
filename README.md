@@ -10,6 +10,8 @@ Your customers can write content with our AI-powered content generation API. The
 | 10M-100M | $0.65/10k characters |
 | >100M | $0.60/10k characters |
 
+Your card will be billed for usage worth of every $100.
+
 ## API key
 Head over to [Accounts → API](https://app.rytr.me/account/api-access) section and get the API key.
 
