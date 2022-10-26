@@ -142,14 +142,14 @@ function ryte($languageId, $toneId, $useCaseId, $inputContexts) {
   }
 
   // Generate content
-  if(true) {
+  if(false) {
     // Step 1 - Identify language ID (use language list API endpoint)
     $languageIdEnglish = '607adac76f8fe5000c1e636d'; // English
 
     // Step 2 - Identify tone ID (use tone list API endpoint)
     $toneIdConvincing = '60572a639bdd4272b8fe358b'; // Convincing
 
-    if (false) {
+    if (true) {
       // Step 3 - Identify use case ID (use use-case list API endpoint)
       $useCaseIdMagicCommand = '60ed7113732a5b000cf99e8e'; // Magic command
 
@@ -193,7 +193,7 @@ function ryte($languageId, $toneId, $useCaseId, $inputContexts) {
       print_r($outputs);
     }
 
-    if (true) {
+    if (false) {
       // Step 3 - Identify use case ID (use use-case list API endpoint)
       $useCaseIdBlogSection = '60584cf2c2cdaa000c2a7954'; // Blog section writing
 
