@@ -2,29 +2,73 @@
 const axios = require('axios')
 
 // API key
-const API_KEY = '<YOUR_API_KEY>' // (Get your API key here: https://app.rytr.me/account/api-access)
+const API_KEY = '<YOUR_API_KEY>' // Get your API key here: https://app.rytr.me/account/api-access
 
 // API URL
 const API_URL = 'https://api.rytr.me/v1'
 
-// Step 1 - Identify language ID (use language list API endpoint)
-// For example: English
-const languageIdEnglish = '607adac76f8fe5000c1e636d'
+// Language list
+async function languageList() {
+  try {
+    const { data } = await axios({
+      method: 'get',
+      url: `${API_URL}/languages`,
+      headers: {
+        Authentication: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    })
 
-// Step 2 - Identify tone ID (use tone list API endpoint)
-// For example: Convincing
-const toneIdConvincing = '60572a639bdd4272b8fe358b'
+    return data ? data.data : null
+  } catch (error) {
+    console.log(error)
+  }
 
-// Step 3 - Identify use case ID (use use-case list API endpoint)
-// Magic command
-const useCaseMagicCommandId = '60ed7113732a5b000cf99e8e'
-// Job description
-const useCaseJobDescriptionId = '60586b31cdebbb000c21058d'
-// Blog section writing
-const useCaseBlogSectionId = '60584cf2c2cdaa000c2a7954'
+  return null
+}
 
-// get use-case detail
-async function useCaseDetailById(useCaseId) {
+// Tone list
+async function toneList() {
+  try {
+    const { data } = await axios({
+      method: 'get',
+      url: `${API_URL}/tones`,
+      headers: {
+        Authentication: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    })
+
+    return data ? data.data : null
+  } catch (error) {
+    console.log(error)
+  }
+
+  return null
+}
+
+// Use case list
+async function useCaseList() {
+  try {
+    const { data } = await axios({
+      method: 'get',
+      url: `${API_URL}/use-cases`,
+      headers: {
+        Authentication: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    })
+
+    return data ? data.data : null
+  } catch (error) {
+    console.log(error)
+  }
+
+  return null
+}
+
+// Use case detail
+async function useCaseDetail({ useCaseId }) {
   try {
     const { data } = await axios({
       method: 'get',
@@ -43,8 +87,8 @@ async function useCaseDetailById(useCaseId) {
   return null
 }
 
-// ryte
-async function ryte({ useCaseId, inputContexts }) {
+// Generate content
+async function ryte({ languageId, toneId, useCaseId, inputContexts }) {
   try {
     const { data } = await axios({
       method: 'post',
@@ -54,8 +98,8 @@ async function ryte({ useCaseId, inputContexts }) {
         'Content-Type': 'application/json',
       },
       data: {
-        languageId: languageIdEnglish,
-        toneId: toneIdConvincing,
+        languageId,
+        toneId,
         useCaseId,
         inputContexts,
         variations: 1,
@@ -72,59 +116,137 @@ async function ryte({ useCaseId, inputContexts }) {
   return null
 }
 
+// Usage
+async function usage() {
+  try {
+    const { data } = await axios({
+      method: 'get',
+      url: `${API_URL}/usage`,
+      headers: {
+        Authentication: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    })
+
+    return data ? data.data : null
+  } catch (error) {
+    console.log(error)
+  }
+
+  return null
+}
+
 ;(async () => {
-  // Example 1
-  console.log('Example 1 - Magic Command')
-  const useCaseMagicCommand = await useCaseDetailById(useCaseMagicCommandId)
-
-  if (useCaseMagicCommand) {
-    let inputContexts = {
-      [useCaseMagicCommand.contextInputs[0].keyLabel]:
-        'Write an email for taking a sick leave',
-    }
-
-    let output = await ryte({
-      useCaseId: useCaseMagicCommand._id,
-      inputContexts,
-    })
-
-    console.log('Output:', output)
+  // Get languages
+  if (true) {
+    const languages = await languageList()
+    console.log('languages', languages)
   }
 
-  // Example 2
-  console.log('Example 2 - Job description')
-  const useCaseJobDescription = await useCaseDetailById(useCaseJobDescriptionId)
-
-  if (useCaseJobDescription) {
-    const inputContexts = {
-      [useCaseJobDescription.contextInputs[0].keyLabel]: 'Product Manager',
-    }
-
-    const output = await ryte({
-      useCaseId: useCaseJobDescription._id,
-      inputContexts,
-    })
-
-    console.log('Output:', output)
+  // Get tones
+  if (false) {
+    const tones = await toneList()
+    console.log('tones', tones)
   }
 
-  // Example 3
-  console.log('Example 3 - Blog section writing')
-  const useCaseBlogSection = await useCaseDetailById(useCaseBlogSectionId)
+  // Get use-cases
+  if (false) {
+    const useCases = await useCaseList()
+    console.log('useCases', useCases)
+  }
 
-  if (useCaseBlogSection) {
-    const inputContexts = {
-      [useCaseBlogSection.contextInputs[0].keyLabel]:
-        'Role of AI Writers in the Future of Copywriting',
-      [useCaseBlogSection.contextInputs[1].keyLabel]:
-        'ai writer, blog generator, best writing software',
+  // Get use-case detail
+  if (false) {
+    // Example use case: Magic command
+    const useCaseIdMagicCommand = '60ed7113732a5b000cf99e8e'
+
+    const useCase = await useCaseDetail({ useCaseId: useCaseIdMagicCommand })
+    console.log('useCase', useCase)
+  }
+
+  // Generate content
+  if (false) {
+    // Step 1 - Identify language ID (use language list API endpoint)
+    const languageIdEnglish = '607adac76f8fe5000c1e636d' // English
+
+    // Step 2 - Identify tone ID (use tone list API endpoint)
+    const toneIdConvincing = '60572a639bdd4272b8fe358b' // Convincing
+
+    if (true) {
+      // Step 3 - Identify use case ID (use use-case list API endpoint)
+      const useCaseIdMagicCommand = '60ed7113732a5b000cf99e8e' // Magic command
+
+      // Step 4 - Identify use case details (use use-case detail API endpoint)
+      const useCaseMagicCommand = await useCaseDetail({
+        useCaseId: useCaseIdMagicCommand,
+      })
+
+      // Step 5 - Generate content (use ryte API endpoint)
+      const outputs = await ryte({
+        languageId: languageIdEnglish,
+        toneId: toneIdConvincing,
+        useCaseId: useCaseIdMagicCommand,
+        inputContexts: {
+          [useCaseMagicCommand.contextInputs[0].keyLabel]:
+            'Write an email for taking a sick leave',
+        },
+      })
+
+      console.log('outputs', outputs)
     }
 
-    const output = await ryte({
-      useCaseId: useCaseBlogSection._id,
-      inputContexts,
-    })
+    if (false) {
+      // Step 3 - Identify use case ID (use use-case list API endpoint)
+      const useCaseIdJobDescription = '60586b31cdebbb000c21058d' // Job description
 
-    console.log('Output:', output)
+      // Step 4 - Identify use case details (use use-case detail API endpoint)
+      const useCaseJobDescription = await useCaseDetail({
+        useCaseId: useCaseIdJobDescription,
+      })
+
+      // Step 5 - Generate content (use ryte API endpoint)
+      const outputs = await ryte({
+        languageId: languageIdEnglish,
+        toneId: toneIdConvincing,
+        useCaseId: useCaseIdJobDescription,
+        inputContexts: {
+          [useCaseJobDescription.contextInputs[0].keyLabel]: 'Product Manager',
+        },
+      })
+
+      console.log('outputs', outputs)
+    }
+
+    if (false) {
+      // Step 3 - Identify use case ID (use use-case list API endpoint)
+      const useCaseIdBlogSection = '60584cf2c2cdaa000c2a7954' // Blog section writing
+
+      // Step 4 - Identify use case details (use use-case detail API endpoint)
+      const useCaseBlogSection = await useCaseDetail({
+        useCaseId: useCaseIdBlogSection,
+      })
+
+      // Step 5 - Generate content (use ryte API endpoint)
+      const outputs = await ryte({
+        languageId: languageIdEnglish,
+        toneId: toneIdConvincing,
+        useCaseId: useCaseIdBlogSection,
+        inputContexts: {
+          [useCaseBlogSection.contextInputs[0].keyLabel]:
+            'Role of AI Writers in the Future of Copywriting',
+          [useCaseBlogSection.contextInputs[1].keyLabel]:
+            'ai writer, blog generator, best writing software',
+        },
+      })
+
+      console.log('outputs', outputs)
+    }
+  }
+
+  // Get usage (for current billing period only)
+  if (false) {
+    const data = await usage()
+
+    console.log('data', data)
   }
 })()

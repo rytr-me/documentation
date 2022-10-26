@@ -26,22 +26,13 @@ curl \
   -X GET https://api.rytr.me/v1/languages
 ```
 
-### Tones list
+### Tone list
 Get list of tones
 ```bash
 curl \
   -H "Authentication: Bearer <API KEY>" \
   -H "Content-Type: application/json" \
   -X GET https://api.rytr.me/v1/tones
-```
-
-### Tone detail
-Get detail of particular tone
-```bash
-curl \
-  -H "Authentication: Bearer <API KEY>" \
-  -H "Content-Type: application/json" \
-  -X GET https://api.rytr.me/v1/tones/<TONE ID>
 ```
 
 ### Use-case list
@@ -77,7 +68,7 @@ Supported creativity levels `creativityLevel` = `default` | `none` | `low` | `me
 
 You can request upto maximum 3 variants per request, i.e. `variations` = 1 to 3
 
-For `userId` you need to supply user ID from your database, eg: primary key for `users` database table. As a consumer of Rytr API, we assume you have a product/service yourself with user, hence since they'll be exposed to the API via your service, we need to track a unique key for each user from your database. It doesn't necessarily need to be a primary key, it can be any unique key generated for each user.
+For `userId` you need to supply user ID from your database, eg: primary key for `users` database table. As a consumer of Rytr API, we assume you have a product/service yourself with user and since they'll be exposed to the Rytr API via your service, we need to track a unique key for each user from your database. It doesn't necessarily need to be a primary key, it can be any unique key generated for each user.
 
 ### Usage
 Get usage for current billing period
@@ -87,7 +78,6 @@ curl \
   -H "Content-Type: application/json" \
   -X GET https://api.rytr.me/v1/usage
 ```
-
 
 ### Custom use case create
 Create [custom use-case](https://rytr.me/resources#custom-use-cases) and submit for approval.
