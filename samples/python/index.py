@@ -145,7 +145,7 @@ def main():
       useCaseBlogSection = useCaseDetail(useCaseIdBlogSection)
 
       keyTopic = useCaseBlogSection['contextInputs'][0]['keyLabel']
-      keyKeywords = useCaseBlogSection['contextInputs'][0]['keyLabel']
+      keyKeywords = useCaseBlogSection['contextInputs'][1]['keyLabel']
       inputContexts = { keyTopic: 'Role of AI Writers in the Future of Copywriting', keyKeywords: 'ai writer, blog generator, best writing software' }
 
       # Step 5 - Generate content (use ryte API endpoint)
