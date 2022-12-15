@@ -88,3 +88,6 @@ curl \
   -d '{"name": "<NAME>", "inputName": "<INPUT NAME>", "inputPlaceholder": "<INPUT PLACEHOLDER>", "outputExample": "<OUTPUT EXAMPLE>"}' \
   -X POST https://api.rytr.me/v1/custom-use-cases/create
 ```
+
+## Support
+Please reach out to us via live chat on [website](https://rytr.me) or via email (support@rytr.me)
