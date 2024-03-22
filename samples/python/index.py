@@ -26,6 +26,17 @@ def toneList():
     print('An exception occurred')
   return None
 
+# Voice list
+def voiceList():
+  try:
+    headers = {'Authentication': 'Bearer ' + API_KEY}
+    r = requests.get(API_URL + '/voices', headers=headers)
+    data = r.json()
+    return data['data']
+  except:
+    print('An exception occurred')
+  return None
+
 # Use case list
 def useCaseList():
   try:

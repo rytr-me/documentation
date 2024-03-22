@@ -47,6 +47,26 @@ async function toneList() {
   return null
 }
 
+// Voice list
+async function voiceList() {
+  try {
+    const { data } = await axios({
+      method: 'get',
+      url: `${API_URL}/voices`,
+      headers: {
+        Authentication: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    })
+
+    return data ? data.data : null
+  } catch (error) {
+    console.log(error)
+  }
+
+  return null
+}
+
 // Use case list
 async function useCaseList() {
   try {
