@@ -35,6 +35,15 @@ curl \
   -X GET https://api.rytr.me/v1/tones
 ```
 
+### Voice list
+Get list of user voices
+```bash
+curl \
+  -H "Authentication: Bearer <API KEY>" \
+  -H "Content-Type: application/json" \
+  -X GET https://api.rytr.me/v1/voices
+```
+
 ### Use-case list
 Get list of use-case
 ```bash
@@ -59,9 +68,12 @@ Generate content using AI
 curl \
   -H "Authentication: Bearer <API KEY>" \
   -H "Content-Type: application/json" \
-  -d '{"languageId": "<LANUGAGE ID>", "toneId": "<TONE ID>", "useCaseId": "<USE-CASE ID>", "inputContexts": {"<USE-CASE CONTEXT-INPUT KEY-LABEL>": "<VALUE>"}, "variations": 1, "userId": "<UNIQUE USER ID>", "format": "html", "creativityLevel": "default", "translate": "ai"}' \
+  -d '{"languageId": "<LANUGAGE ID>", "toneId": "<TONE ID>", "voiceId": "<VOICE ID>", "useCaseId": "<USE-CASE ID>", "inputContexts": {"<USE-CASE CONTEXT-INPUT KEY-LABEL>": "<VALUE>"}, "variations": 1, "userId": "<UNIQUE USER ID>", "format": "html", "creativityLevel": "default", "translate": "ai"}' \
   -X POST https://api.rytr.me/v1/ryte
 ```
+
+Supply either `toneId` or `voiceId`, not both.
+
 Supported formats `format` = `html` | `text`
 
 Supported creativity levels `creativityLevel` = `default` | `none` | `low` | `medium` | `high` | `max`

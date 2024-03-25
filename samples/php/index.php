@@ -46,6 +46,25 @@ function toneList() {
   return null;
 }
 
+// Voice list
+function voiceList() {
+  try {
+    $endpoint = 'voices';
+
+    $response = curl($endpoint, 'get');
+
+    if($response) {
+      $voices = json_decode($response);
+
+      return $voices->data;
+    }
+  } catch (Exception $error) {
+    echo $error;
+  }
+
+  return null;
+}
+
 // Use case list
 function useCaseList() {
   try {
