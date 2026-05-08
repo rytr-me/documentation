@@ -6,7 +6,7 @@ require 'util.php';
 define('API_KEY', '<YOUR_API_KEY>'); // Get your API key here: https://app.rytr.me/account/api-access
 
 // API endpoint
-define('API_URL', 'https://api.rytr.me/v1');
+define('API_URL', 'https://app.rytr.me/v1');
 
 // Language list
 function languageList() {

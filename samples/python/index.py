@@ -2,7 +2,7 @@ import requests
 import json
 
 API_KEY = '<YOUR_API_KEY>' # Get your API key here: https://app.rytr.me/account/api-access
-API_URL = 'https://api.rytr.me/v1'
+API_URL = 'https://app.rytr.me/v1'
 
 # Language list
 def languageList():

@@ -23,7 +23,7 @@ Get list of languages
 curl \
   -H "Authentication: Bearer <API KEY>" \
   -H "Content-Type: application/json" \
-  -X GET https://api.rytr.me/v1/languages
+  -X GET https://app.rytr.me/v1/languages
 ```
 
 ### Tone list
@@ -32,7 +32,7 @@ Get list of tones
 curl \
   -H "Authentication: Bearer <API KEY>" \
   -H "Content-Type: application/json" \
-  -X GET https://api.rytr.me/v1/tones
+  -X GET https://app.rytr.me/v1/tones
 ```
 
 ### Voice list
@@ -41,7 +41,7 @@ Get list of user voices
 curl \
   -H "Authentication: Bearer <API KEY>" \
   -H "Content-Type: application/json" \
-  -X GET https://api.rytr.me/v1/voices
+  -X GET https://app.rytr.me/v1/voices
 ```
 
 ### Use-case list
@@ -50,7 +50,7 @@ Get list of use-case
 curl \
   -H "Authentication: Bearer <API KEY>" \
   -H "Content-Type: application/json" \
-  -X GET https://api.rytr.me/v1/use-cases
+  -X GET https://app.rytr.me/v1/use-cases
 ```
 
 ### Use-case detail
@@ -59,7 +59,7 @@ Get detail of particular use-case
 curl \
   -H "Authentication: Bearer <API KEY>" \
   -H "Content-Type: application/json" \
-  -X GET https://api.rytr.me/v1/use-cases/<USE-CASE ID>
+  -X GET https://app.rytr.me/v1/use-cases/<USE-CASE ID>
 ```
 
 ### Ryte
@@ -69,7 +69,7 @@ curl \
   -H "Authentication: Bearer <API KEY>" \
   -H "Content-Type: application/json" \
   -d '{"languageId": "<LANUGAGE ID>", "toneId": "<TONE ID>", "voiceId": "<VOICE ID>", "useCaseId": "<USE-CASE ID>", "inputContexts": {"<USE-CASE CONTEXT-INPUT KEY-LABEL>": "<VALUE>"}, "variations": 1, "userId": "<UNIQUE USER ID>", "format": "html", "creativityLevel": "default", "translate": "ai"}' \
-  -X POST https://api.rytr.me/v1/ryte
+  -X POST https://app.rytr.me/v1/ryte
 ```
 
 Supply either `toneId` or `voiceId`, not both.
@@ -90,7 +90,7 @@ Get usage for current billing period
 curl \
   -H "Authentication: Bearer <API KEY>" \
   -H "Content-Type: application/json" \
-  -X GET https://api.rytr.me/v1/usage
+  -X GET https://app.rytr.me/v1/usage
 ```
 
 ### Custom use case create
@@ -100,7 +100,7 @@ curl \
   -H "Authentication: Bearer <API KEY>" \
   -H "Content-Type: application/json" \
   -d '{"name": "<NAME>", "inputName": "<INPUT NAME>", "inputPlaceholder": "<INPUT PLACEHOLDER>", "outputExample": "<OUTPUT EXAMPLE>"}' \
-  -X POST https://api.rytr.me/v1/custom-use-cases/create
+  -X POST https://app.rytr.me/v1/custom-use-cases/create
 ```
 
 ## Support

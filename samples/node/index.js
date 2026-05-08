@@ -5,7 +5,7 @@ const axios = require('axios')
 const API_KEY = '<YOUR_API_KEY>' // Get your API key here: https://app.rytr.me/account/api-access
 
 // API URL
-const API_URL = 'https://api.rytr.me/v1'
+const API_URL = 'https://app.rytr.me/v1'
 
 // Language list
 async function languageList() {
